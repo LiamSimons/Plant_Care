@@ -17,20 +17,13 @@
         app:srcCompat="@drawable/planten" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_plants"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="8dp"
+        android:onClick="goToMyPlants"
         android:text="My Plants"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.196" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button3"
+        tools:layout_editor_absoluteX="225dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -45,7 +38,7 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_add"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -55,7 +48,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/button_plants"
+        android:onClick="goToAdd"/>
 
     <Button
         android:id="@+id/button3"
@@ -68,5 +62,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button_add" />
 </android.support.constraint.ConstraintLayout>
