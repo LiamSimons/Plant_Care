@@ -73,7 +73,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
-        android:text="Dirk is thirsty every ..."
+        android:text="Dirk is thirsty every ... (days)"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_day" />
 
@@ -86,16 +86,6 @@
             android:text="Preferred light intensity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_water" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
-            android:text="Today"
-            app:layout_constraintStart_toEndOf="@+id/editText_day"
-            app:layout_constraintTop_toBottomOf="@+id/textView_day" />
 
         <Button
             android:id="@+id/done"
@@ -120,19 +110,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_name" />
 
-    <EditText
-        android:id="@+id/editText_day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="01/01/2000"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_day" />
-
-    <EditText
+        <EditText
         android:id="@+id/editText_species"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -151,7 +129,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="time"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_water" />
 
@@ -167,5 +145,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_light" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textdate"
+            android:layout_width="217dp"
+            android:layout_height="49dp"
+            android:hint="Select date"
+            android:android:textSize="20sp"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="361dp" />
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>

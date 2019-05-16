@@ -6,10 +6,10 @@ public class Plant {
     private String nickname;
     private String species;
     private LocalDate plantDate;
-    private Duration wateringTime;
+    private int wateringTime;
     private int lightIntensity;
 
-    public Plant (String nickname, String species, LocalDate plantDate, Duration wateringTime, int lightIntensity){
+    public Plant (String nickname, String species, LocalDate plantDate, int wateringTime, int lightIntensity){
         this.nickname = nickname;
         this.species = species;
         this.plantDate = plantDate;
@@ -41,11 +41,11 @@ public class Plant {
         this.plantDate = plantDate;
     }
 
-    public Duration getWateringTime() {
+    public int getWateringTime() {
         return wateringTime;
     }
 
-    public void setWateringTime(Duration wateringTime) {
+    public void setWateringTime(int wateringTime) {
         this.wateringTime = wateringTime;
     }
 
