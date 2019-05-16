@@ -52,7 +52,7 @@ public class AddPlant extends AppCompatActivity {
         };
     }
 
-
+//zou nieuw plant object moeten aanmaken
     public void done(View view) {
         String name = ((EditText) findViewById(R.id.editText_name)).getText().toString();
         String species = ((EditText) findViewById(R.id.editText_species)).getText().toString();
