@@ -23,7 +23,7 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="367dp">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -75,4 +75,13 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="test"
+        android:text="Button" />
+    //ik probeer met deze knop de login te omzeilen om te testen
+
 </LinearLayout>

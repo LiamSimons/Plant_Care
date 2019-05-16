@@ -3,14 +3,11 @@ package com.example.plantcare;
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 
 public class AddPlant extends AppCompatActivity {
@@ -61,8 +58,7 @@ public class AddPlant extends AppCompatActivity {
         String species = ((EditText) findViewById(R.id.editText_species)).getText().toString();
         String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString();
         int watertime = new Integer(str1).intValue();
-        int light = ..
+
 
         }
     }
-}
