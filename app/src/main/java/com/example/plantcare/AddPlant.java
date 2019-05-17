@@ -53,13 +53,16 @@ public class AddPlant extends AppCompatActivity {
         };
     }
 
-//zou nieuw plant object moeten aanmaken
+//zou nieuw plant object moeten aanmaken en die in de db storen
     public void done(View view) {
         String name = ((EditText) findViewById(R.id.editText_name)).getText().toString();
         String species = ((EditText) findViewById(R.id.editText_species)).getText().toString();
         String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString();
         int watertime = new Integer(str1).intValue();
+
+
         System.out.println(name+", "+species+", "+watertime+", " + cal);
+        //Plant plant = new Plant(name,species,cal,watertime,);
 
 
         }
