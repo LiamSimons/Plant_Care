@@ -16,6 +16,7 @@ public class AddPlant extends AppCompatActivity {
 
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private Calendar cal;
 
     //Als die op de textview klinkt zou er een kalender tevoorschijn moeten komen waar hij een datum kan kiezen.
     //https://www.youtube.com/watch?v=hwe1abDO2Ag
@@ -28,7 +29,7 @@ public class AddPlant extends AppCompatActivity {
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
+                cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -58,6 +59,7 @@ public class AddPlant extends AppCompatActivity {
         String species = ((EditText) findViewById(R.id.editText_species)).getText().toString();
         String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString();
         int watertime = new Integer(str1).intValue();
+        System.out.println(name+", "+species+", "+watertime+", " + cal);
 
 
         }

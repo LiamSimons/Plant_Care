@@ -1,15 +1,16 @@
 import java.time.LocalDate;
+import java.util.Calendar;
 
 import javax.xml.datatype.Duration;
 
 public class Plant {
     private String nickname;
     private String species;
-    private LocalDate plantDate;
+    private Calendar plantDate;
     private int wateringTime;
     private int lightIntensity;
 
-    public Plant (String nickname, String species, LocalDate plantDate, int wateringTime, int lightIntensity){
+    public Plant (String nickname, String species, Calendar plantDate, int wateringTime, int lightIntensity){
         this.nickname = nickname;
         this.species = species;
         this.plantDate = plantDate;
@@ -33,11 +34,11 @@ public class Plant {
         this.species = species;
     }
 
-    public LocalDate getPlantDate() {
+    public Calendar getPlantDate() {
         return plantDate;
     }
 
-    public void setPlantDate(LocalDate plantDate) {
+    public void setPlantDate(Calendar plantDate) {
         this.plantDate = plantDate;
     }
 
