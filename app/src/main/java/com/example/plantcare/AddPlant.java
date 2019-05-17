@@ -1,5 +1,6 @@
 package com.example.plantcare;
 
+
 import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Calendar;
+
+import classes.Plant;
 
 public class AddPlant extends AppCompatActivity {
 
@@ -53,6 +56,8 @@ public class AddPlant extends AppCompatActivity {
         };
     }
 
+    // optie: voeg nog light intensity toe, (alertdialog builder)
+
 //zou nieuw plant object moeten aanmaken en die in de db storen
     public void done(View view) {
         String name = ((EditText) findViewById(R.id.editText_name)).getText().toString();
@@ -62,7 +67,7 @@ public class AddPlant extends AppCompatActivity {
 
 
         System.out.println(name+", "+species+", "+watertime+", " + cal);
-        //Plant plant = new Plant(name,species,cal,watertime,);
+        Plant plant = new Plant(name,species,cal,watertime);
 
 
         }

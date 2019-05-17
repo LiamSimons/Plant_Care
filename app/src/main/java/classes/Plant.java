@@ -10,14 +10,13 @@ public class Plant {
     private String species;
     private Calendar plantDate;
     private int wateringTime;
-    private int lightIntensity;
+   // private int lightIntensity;
 
-    public Plant (String nickname, String species, Calendar plantDate, int wateringTime, int lightIntensity){
+    public Plant (String nickname, String species, Calendar plantDate, int wateringTime){
         this.nickname = nickname;
         this.species = species;
         this.plantDate = plantDate;
         this.wateringTime = wateringTime;
-        this.lightIntensity = lightIntensity;
     }
 
     public String getNickname() {
@@ -52,11 +51,5 @@ public class Plant {
         this.wateringTime = wateringTime;
     }
 
-    public int getLightIntensity() {
-        return lightIntensity;
-    }
 
-    public void setLightIntensity(int lightIntensity) {
-        this.lightIntensity = lightIntensity;
-    }
 }
