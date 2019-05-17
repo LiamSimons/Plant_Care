@@ -2,12 +2,16 @@ package com.example.plantcare;
 
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 
 import java.util.Calendar;
 
@@ -20,6 +24,7 @@ public class AddPlant extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private Calendar cal;
+    private String datum;
 
     //Als die op de textview klinkt zou er een kalender tevoorschijn moeten komen waar hij een datum kan kiezen.
     //https://www.youtube.com/watch?v=hwe1abDO2Ag
@@ -50,7 +55,7 @@ public class AddPlant extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 month++;
 
-                String datum = day +"/" + month +"/"+year;
+                datum = day +"/" + month +"/"+year;
                 mDisplayDate.setText(datum);
             }
         };
@@ -65,9 +70,12 @@ public class AddPlant extends AppCompatActivity {
         String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString();
         int watertime = new Integer(str1).intValue();
 
-
-        System.out.println(name+", "+species+", "+watertime+", " + cal);
+        System.out.println(name+", "+species+", "+watertime+", " + datum);
         Plant plant = new Plant(name,species,cal,watertime);
+
+//        Context context = getApplicationContext();
+//        plant.plantToDB(context);
+
 
 
         }
