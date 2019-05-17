@@ -76,26 +76,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_day" />
 
-        <TextView
-            android:id="@+id/textView_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="72dp"
-            android:text="Preferred light intensity"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_water" />
-
         <Button
             android:id="@+id/done"
             android:layout_width="wrap_content"
             android:layout_height="44dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="28dp"
+            android:onClick="done"
             android:text="Done"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_light"
-            android:onClick="done"/>
+            app:layout_constraintTop_toBottomOf="@+id/editText_water" />
 
         <EditText
             android:id="@+id/editText_name"
@@ -131,18 +121,6 @@
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_water" />
-
-        <EditText
-            android:id="@+id/editText_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="24dp"
-            android:ems="10"
-            android:inputType="number"
-            android:text="7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_light" />
 
         <TextView
             android:id="@+id/textdate"
