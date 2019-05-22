@@ -13,7 +13,7 @@ public class PlantProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_profile);
         TextView naam = findViewById(R.id.textView2);
-        String str = Plant.getNickname();
-        naam.setText(str);
+        //String str = Plant.getNickname();
+        //naam.setText(str);
     }
 }

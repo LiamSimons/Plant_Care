@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#FFFDFDFE">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView"
@@ -25,7 +26,7 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:onClick="goToMyPlants"
-        android:text="My Plants"
+        android:text="@string/my_plants"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.276"
@@ -41,7 +42,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-black"
-        android:text="Plant Care"
+        android:text="@string/plant_care"
         android:textAllCaps="false"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -49,55 +50,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_add"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:layout_marginEnd="64dp"
-        android:onClick="goToAdd"
-        android:text="Add Plant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_plants" />
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="248dp"
+            android:layout_marginTop="148dp"
+            android:onClick="goToAdd"
+            android:text="@string/add_plant"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_plants" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="8dp"
-        android:text="Agenda"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_add" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/agenda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.842"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_add" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="172dp"
-        android:layout_height="176dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/button_add"
-        app:layout_constraintHorizontal_bias="0.409"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:srcCompat="@drawable/addplant" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="172dp"
+            android:layout_height="176dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/button_add"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:srcCompat="@drawable/addplant" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="212dp"
-        android:layout_height="207dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/agenda" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="212dp"
+            android:layout_height="207dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.153"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:srcCompat="@drawable/agenda" />
     </android.support.constraint.ConstraintLayout>
-</ScrollView>
+</LinearLayout>

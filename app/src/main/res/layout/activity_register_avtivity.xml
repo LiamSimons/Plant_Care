@@ -36,10 +36,28 @@
 
 
             <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/family_name"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/familyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/name"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress" />
@@ -48,33 +66,17 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword" />
-
-            <TextView
-                android:id="@+id/errorMessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="" />
-
-            <Button
-                android:id="@+id/loginButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/login"
-                android:onClick="checkUsername"/>
 
             <Button
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/register"
-                android:layout_marginTop="10dp"
-                android:onClick="goToRegister"/>
-
+                android:layout_marginTop="10dp" />
             <TextView
                 android:id="@+id/skipLogin"
                 android:layout_width="match_parent"

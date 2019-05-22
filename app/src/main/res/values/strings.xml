@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">PlantCare</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -13,4 +13,17 @@
         completions."
     </string>
     <string name="title_activity_login">Sign in</string>
+    <string name="password">Password</string>
+    <string name="email">E-mail</string>
+    <string name="login">Login</string>
+    <string name="textView">TextView</string>
+    <string name="plant_care">Plant Care</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="name">Name</string>
+    <string name="family_name">Family Name</string>
+    <string name="register" tools:ignore="ExtraTranslation">Register</string>
+    <string name="skip">Skip</string>
+    <string name="add_plant">Add Plant</string>
+    <string name="agenda">Agenda</string>
+    <string name="my_plants">My Plants</string>
 </resources>
