@@ -9,7 +9,7 @@
 
     <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 <ImageView
         android:id="@+id/imageView3"
@@ -28,7 +28,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="30dp"
             android:fontFamily="sans-serif-black"
-            android:text="Add Plant"
+            android:text="@string/add_plant"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="60dp"
-            android:text="Nickname"
+            android:text="@string/nickname"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="76dp"
-        android:text="Species"
+        android:text="@string/species"
         android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_name" />
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="84dp"
-        android:text="Plant day"
+        android:text="@string/planting_day"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_species" />
 
@@ -72,7 +72,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
-        android:text="Dirk is thirsty every ... (days)"
+        android:text="@string/your_plant_is_thirsty_every_days"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_day" />
 
@@ -83,7 +83,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="28dp"
             android:onClick="done"
-            android:text="Done"
+            android:text="@string/done"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_water" />
 
@@ -95,7 +95,7 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Dirk"
+            android:hint="@string/dirk"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_name" />
 
@@ -107,7 +107,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Rose"
+        android:hint="@string/rose"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_species" />
 
@@ -128,7 +128,7 @@
             android:layout_height="49dp"
             android:layout_marginStart="44dp"
             android:layout_marginTop="8dp"
-            android:hint="Select date"
+            android:hint="@string/select_date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_day" />
 

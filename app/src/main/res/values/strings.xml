@@ -26,4 +26,12 @@
     <string name="add_plant">Add Plant</string>
     <string name="agenda">Agenda</string>
     <string name="my_plants">My Plants</string>
+    <string name="dirk">Dirk</string>
+    <string name="rose">Rose</string>
+    <string name="your_plant_is_thirsty_every_days">Your plant is thirsty every ... (days)</string>
+    <string name="done">Done</string>
+    <string name="select_date">Select date</string>
+    <string name="nickname">Nickname</string>
+    <string name="species">Species</string>
+    <string name="planting_day">Planting day</string>
 </resources>
