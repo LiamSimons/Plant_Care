@@ -12,8 +12,19 @@ public class PlantProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_profile);
-        TextView naam = findViewById(R.id.textView2);
-        //String str = Plant.getNickname();
-        //naam.setText(str);
+        //moet nog plant object door krijgen met intent
+
+//        TextView naam = findViewById(R.id.textViewName);
+//        String str1 = Plant.getNickname();
+//        naam.setText(str1);
+//        TextView species = findViewById(R.id.textViewSpecies);
+//        String str2 = Plant.getSpecies();
+//        species.setText(str2);
+//        TextView day = findViewById(R.id.textViewDate);
+//        String str3 = Plant.getPlantDate();
+//        naam.setText(str3);
+//        TextView water = findViewById(R.id.textViewWater);
+//        String str4 = Plant.getWateringTime();
+//        species.setText(str4);
     }
 }
