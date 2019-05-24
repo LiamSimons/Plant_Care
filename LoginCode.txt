@@ -1,0 +1,107 @@
+public class LoginActivity extends AppCompatActivity {
+    private EditText editTextUsername;
+    private EditText editTextPassword;
+    private Button loginButton;
+    private Button registerButton;
+    private Context context;
+
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String usernameInput = editTextUsername.getText().toString().trim();
+            String passwordInput = editTextPassword.getText().toString().trim();
+            loginButton.setEnabled(!usernameInput.isEmpty() && !passwordInput.isEmpty());
+            registerButton.setEnabled(!usernameInput.isEmpty() && !passwordInput.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        editTextUsername = findViewById(R.id.email);
+        editTextPassword = findViewById(R.id.password);
+        loginButton = findViewById(R.id.loginButton);
+        registerButton = findViewById(R.id.registerButton);
+
+        editTextUsername.addTextChangedListener(loginTextWatcher);
+        editTextPassword.addTextChangedListener(loginTextWatcher);
+        context = this;
+
+    }
+
+
+
+    public void sendMessage(View view) {
+        Intent intent = new Intent (this, MainActivity.class);
+        EditText editText = findViewById(R.id.email);
+        String userName = editText.getText().toString();
+        intent.putExtra("USERNAME", userName);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToRegister(View view) {
+        Intent intent= new Intent(this, RegisterAvtivity.class);
+        startActivity(intent);
+    }
+
+    public void skipLogin(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void checkUsername(final View view) {
+
+        String email = ((EditText)findViewById(R.id.email)).getText().toString();
+        RequestQueue queue =  Volley.newRequestQueue(this);
+        String url = "https://studev.groept.be/api/a18_sd409/checkPassword/";
+        String password = ((EditText)findViewById(R.id.password)).getText().toString();
+        String pass = getHash(password);
+        url += pass + "/" + email;
+        JsonArrayRequest request = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONObject user = response.getJSONObject(0);
+                            String answer = user.getString("answer");
+                            System.out.println(answer);
+                            TextView statusText = findViewById(R.id.errorMessage);
+                            if (answer.equals("1")) {
+                                sendMessage(view);
+                            }
+                            else {
+                                statusText.setText("Incorrect password.");
+                            }
+
+//                            else {
+//                                statusText.setText("Please register first.");
+//                            }
+                        }
+                        catch(JSONException e) {
+                            ((TextView)findViewById(R.id.errorMessage)).setText("Please register first.");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("Database not found!");
+                    }
+                });
+
+        queue.add(request);
+    }
+    //}
+}
+
