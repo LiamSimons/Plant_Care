@@ -3,6 +3,7 @@ package classes;
 
 import android.content.Context;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,8 +15,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-
-public class Plant {
+// serializable is om plant object te kunnen doorgeven bij intents bij put extra
+public class Plant implements Serializable {
     private String nickname;
     private String species;
     private Calendar plantDate;
