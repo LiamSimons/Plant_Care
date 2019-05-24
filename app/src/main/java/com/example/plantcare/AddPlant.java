@@ -93,7 +93,7 @@ public class AddPlant extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://studev.groept.be/api/a18_sd409/addPlant/";
         System.out.println(url + name + "/" + species + "/" + datum + "/" + str1 + "/" + email);
-        JsonArrayRequest request = new JsonArrayRequest(url + name + "/" + species + "/" + str1 + "/" + str1 + "/" + email,
+        JsonArrayRequest request = new JsonArrayRequest(url + name + "/" + species + "/" + datum + "/" + str1 + "/" + email,
 
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -114,6 +114,7 @@ public class AddPlant extends AppCompatActivity {
 
     public void goToMyPlants(View view){
         Intent intent = new Intent(this, MyPlants.class);
+        intent.putExtra("EMAIL", email);
         startActivity(intent);
     }
 }

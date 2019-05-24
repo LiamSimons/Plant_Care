@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToMyPlants(View view) {
         Intent intent= new Intent(this, MyPlants.class);
+        intent.putExtra("EMAIL", email);
         startActivity(intent);
     }
 
