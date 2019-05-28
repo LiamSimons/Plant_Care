@@ -97,7 +97,9 @@
             android:inputType="textPersonName"
             android:hint="@string/dirk"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_name"
+            android:backgroundTint="#000000"
+            android:textCursorDrawable="@drawable/cursor"/>
 
         <EditText
         android:id="@+id/editText_species"
@@ -109,7 +111,9 @@
         android:inputType="textPersonName"
         android:hint="@string/rose"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_species" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_species"
+            android:backgroundTint="#000000"
+            android:textCursorDrawable="@drawable/cursor"/>
 
     <EditText
         android:id="@+id/editText_water"
@@ -120,7 +124,9 @@
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_water" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_water"
+        android:backgroundTint="#000000"
+        android:textCursorDrawable="@drawable/cursor"/>
 
         <TextView
             android:id="@+id/textdate"

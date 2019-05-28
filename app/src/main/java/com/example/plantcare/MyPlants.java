@@ -26,6 +26,7 @@ import classes.RecyclerViewAdapter;
 public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener{
     private String email;
     private RecyclerViewAdapter adapter;
+    private final ArrayList<String> plantId = new ArrayList<>();
     private final ArrayList<String> plantNames = new ArrayList<>();
     private final ArrayList<String> plantSpecies = new ArrayList<>();
     private final ArrayList<String> plantDays = new ArrayList<>();
@@ -75,18 +76,19 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
                             else {
                                 for (int i = 0; i < response.length(); i++) {
                                     JSONObject row = response.getJSONObject(i);
+                                    String id = row.getString("id");
                                     String name = row.getString("name");
                                     String species = row.getString("species");
                                     String plantDay = row.getString("plantDay");
                                     String waterTime = row.getString("waterTime");
                                     //gebruik hier nog plant class
 
+                                    plantId.add(id);
                                     plantNames.add(name);
                                     plantSpecies.add(species);
                                     plantDays.add(plantDay);
                                     plantWateringTimes.add(waterTime);
 
-                                    System.out.println("koekje");
                                     refreshView();
                                 }
                             }
@@ -119,19 +121,33 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
         int number = position + 1;
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + number, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, PlantProfile.class);
+        String id = plantId.get(position);
         String name = plantNames.get(position);
         String species = plantSpecies.get(position);
         String plantDay = plantDays.get(position);
         String waterTime = plantWateringTimes.get(position);
+        intent.putExtra("ID", id);
         intent.putExtra("NAME", name);
         intent.putExtra("SPECIES", species);
         intent.putExtra("DAY", plantDay);
         intent.putExtra("TIME", waterTime);
+        intent.putExtra("EMAIL", email);
         startActivity(intent);
     }
     private void refreshView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        goToMain();
+    }
+
+    private void goToMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("EMAIL", email);
+        startActivity(intent);
     }
 }

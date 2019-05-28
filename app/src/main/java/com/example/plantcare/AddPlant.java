@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -85,6 +86,10 @@ public class AddPlant extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         email = extras.getString("EMAIL");
 
+        if (TextUtils.isEmpty(name)||TextUtils.isEmpty(species)||TextUtils.isEmpty(str1)||TextUtils.isEmpty(datum)){
+            Toast.makeText(this, "Fill in every field to add plant.", Toast.LENGTH_LONG).show();
+            return;
+        }
         System.out.println(name + ", " + species + ", " + datum + ", " + str1 + "/" + email);
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -95,7 +100,7 @@ public class AddPlant extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        System.out.println("Succesfully added plant.");
+                        System.out.println("Successfully added plant.");
                     }
                 },
                 new Response.ErrorListener() {
