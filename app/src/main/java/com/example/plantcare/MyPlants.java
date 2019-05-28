@@ -120,13 +120,13 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
         startActivity(intent);
     }
 
-//    @Override
-//    public void onItemClick(View view, int position) {
-//        int number = position + 1;
-//        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + number, Toast.LENGTH_SHORT).show();
+    @Override
+    public void onItemClick(View view, int position) {
+        int number = position + 1;
+        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + number, Toast.LENGTH_SHORT).show();
 //        Intent intent = new Intent(this, PlantProfile.class);
 //        intent.pu
-//    }
+    }
     private void refreshView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setVisibility(View.GONE);
