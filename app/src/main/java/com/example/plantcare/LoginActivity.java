@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         editTextUsername.addTextChangedListener(loginTextWatcher);
         editTextPassword.addTextChangedListener(loginTextWatcher);
         context = this;
-
     }
 
 
@@ -95,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
+        Toast.makeText(this, "You successfully logged in.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent (this, MainActivity.class);
         EditText editText = findViewById(R.id.email);
         String mail = editText.getText().toString();
@@ -104,11 +104,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToRegister(View view) {
         Intent intent= new Intent(this, RegisterAvtivity.class);
-        startActivity(intent);
-    }
-
-    public void skipLogin(View view){
-        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

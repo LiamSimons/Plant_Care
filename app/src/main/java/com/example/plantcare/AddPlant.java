@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -81,9 +82,9 @@ public class AddPlant extends AppCompatActivity {
 
     //zou nieuw plant object moeten aanmaken en die in de db storen
     public void done(View view) {
-        String name = ((EditText) findViewById(R.id.editText_name)).getText().toString();
-        String species = ((EditText) findViewById(R.id.editText_species)).getText().toString();
-        String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString();
+        String name = ((EditText) findViewById(R.id.editText_name)).getText().toString().trim();
+        String species = ((EditText) findViewById(R.id.editText_species)).getText().toString().trim();
+        String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString().trim();
 
         Bundle extras = getIntent().getExtras();
         email = extras.getString("EMAIL");
@@ -109,6 +110,8 @@ public class AddPlant extends AppCompatActivity {
                 });
 
         queue.add(request);
+        Toast.makeText(this, "You added " + name + " to the database.", Toast.LENGTH_SHORT).show();
+
         goToMyPlants(view);
     }
 

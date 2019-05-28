@@ -7,7 +7,7 @@
     android:padding="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TEST"
         android:id="@+id/plantName"
@@ -15,6 +15,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="36dp"
         android:textSize="20sp"
-        />
+        android:drawableLeft="@drawable/flowericon"
+        android:gravity="center_vertical"
+        android:drawablePadding="20dp"/>
 
 </RelativeLayout>
