@@ -1,0 +1,36 @@
+    private void addAllPlantsToArrayLists() {
+        String url = "https://studev.groept.be/api/a18_sd409/getPlantData/" + email;
+        RequestQueue queue =  Volley.newRequestQueue(this);
+        JsonArrayRequest request = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONArray array = new JSONArray(response.getJSONArray(0));
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject row = array.getJSONObject(i);
+                                String name = row.getString("name");
+                                String species = row.getString("species");
+                                String plantDay = row.getString("plantDay");
+                                String waterTime = row.getString("waterTime");
+                                plantNames.add(name);
+                                plantSpecies.add(species);
+                                plantDays.add(plantDay);
+                                plantWaterTimes.add(waterTime);
+                            }
+                        }
+                        catch(JSONException e) {
+                            ((TextView)findViewById(R.id.errorMessage)).setText("You have no plants.");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("Database not found!");
+                    }
+                });
+
+        queue.add(request);
+
+    }

@@ -31,6 +31,7 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
     private final ArrayList<String> plantNames = new ArrayList<>();
     private final ArrayList<Plant> plants = new ArrayList<>();
     private  int length;
+    private Plant plant;
 
 
     @Override
@@ -79,7 +80,7 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
                                     String plantDay = row.getString("plantDay");
                                     String waterTime = row.getString("waterTime");
                                     //gebruik hier nog plant class
-                                    Plant plant = new Plant(name, species, plantDay, waterTime);
+                                    plant = new Plant(name, species, plantDay, waterTime);
                                     plants.add(plant);
                                     plantNames.add(name);
                                     System.out.println("koekje");
@@ -102,16 +103,6 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
                 });
 
         queue.add(request);
-
-        try {
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        plantNames.add("testPlant");
-        System.out.println(plantNames);
-
-
     }
 
     public void goToAdd(View view) {
@@ -124,8 +115,9 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
     public void onItemClick(View view, int position) {
         int number = position + 1;
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + number, Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(this, PlantProfile.class);
-//        intent.pu
+        Intent intent = new Intent(this, PlantProfile.class);
+        intent.putExtra("PLANT", plant);
+        startActivity(intent);
     }
     private void refreshView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
