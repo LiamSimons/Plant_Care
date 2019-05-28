@@ -19,19 +19,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
-import classes.Plant;
 import classes.RecyclerViewAdapter;
 
 public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.ItemClickListener{
     private String email;
     private RecyclerViewAdapter adapter;
     private final ArrayList<String> plantNames = new ArrayList<>();
-    private final ArrayList<Plant> plants = new ArrayList<>();
+    private final ArrayList<String> plantSpecies = new ArrayList<>();
+    private final ArrayList<String> plantDays = new ArrayList<>();
+    private final ArrayList<String> plantWateringTimes = new ArrayList<>();
+
     private  int length;
-    private Plant plant;
 
 
     @Override
@@ -80,9 +80,12 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
                                     String plantDay = row.getString("plantDay");
                                     String waterTime = row.getString("waterTime");
                                     //gebruik hier nog plant class
-                                    plant = new Plant(name, species, plantDay, waterTime);
-                                    plants.add(plant);
+
                                     plantNames.add(name);
+                                    plantSpecies.add(species);
+                                    plantDays.add(plantDay);
+                                    plantWateringTimes.add(waterTime);
+
                                     System.out.println("koekje");
                                     refreshView();
                                 }
@@ -116,7 +119,14 @@ public class MyPlants extends AppCompatActivity implements RecyclerViewAdapter.I
         int number = position + 1;
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + number, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, PlantProfile.class);
-        intent.putExtra("PLANT", plant);
+        String name = plantNames.get(position);
+        String species = plantSpecies.get(position);
+        String plantDay = plantDays.get(position);
+        String waterTime = plantWateringTimes.get(position);
+        intent.putExtra("NAME", name);
+        intent.putExtra("SPECIES", species);
+        intent.putExtra("DAY", plantDay);
+        intent.putExtra("TIME", waterTime);
         startActivity(intent);
     }
     private void refreshView(){

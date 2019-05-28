@@ -5,8 +5,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,8 +21,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 
 import java.util.Calendar;
-
-import classes.Plant;
 
 public class AddPlant extends AppCompatActivity {
 
@@ -120,4 +116,6 @@ public class AddPlant extends AppCompatActivity {
         intent.putExtra("EMAIL", email);
         startActivity(intent);
     }
+
+
 }

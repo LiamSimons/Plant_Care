@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlantProfile">
+    tools:context=".PlantProfile"
+    android:background="#FFFDFDFE">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginTop="56dp"
-        android:text="namePlant"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
@@ -66,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="156dp"
         android:layout_marginTop="30dp"
-        android:text="speciesPlant"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
@@ -98,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="112dp"
         android:layout_marginTop="30dp"
-        android:text="datePlanting"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/textViewSpecies" />
 
@@ -108,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
         android:layout_marginTop="28dp"
-        android:text="wateringTime"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
 </android.support.constraint.ConstraintLayout>
