@@ -1,13 +1,17 @@
 package com.example.plantcare;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +20,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -71,32 +77,62 @@ public class RegisterAvtivity extends AppCompatActivity {
     private void register(final View v) {
 
 
-        String email = ((EditText) findViewById(R.id.email)).getText().toString();
-        String password = ((EditText) findViewById(R.id.password)).getText().toString();
-        String familyName = ((EditText) findViewById(R.id.familyName)).getText().toString();
-        String name = ((EditText) findViewById(R.id.name)).getText().toString();
+        final String email = ((EditText) findViewById(R.id.email)).getText().toString();
+        final String password = ((EditText) findViewById(R.id.password)).getText().toString();
+        final String familyName = ((EditText) findViewById(R.id.familyName)).getText().toString();
+        final String name = ((EditText) findViewById(R.id.name)).getText().toString();
+        final Context context = this;
 
-        RequestQueue queue =  Volley.newRequestQueue(this);
-        String url = "https://studev.groept.be/api/a18_sd409/setUserData/";
-        System.out.println(url + email + "/" + getHash(password) + "/" + familyName + "/" + name);
-        JsonArrayRequest request = new JsonArrayRequest(url + email + "/" + getHash(password) + "/" + familyName + "/" + name,
+        if (TextUtils.isEmpty(name)||TextUtils.isEmpty(familyName)||TextUtils.isEmpty(password)||TextUtils.isEmpty(email)){
+            Toast.makeText(this, "Fill in every field to register.", Toast.LENGTH_LONG).show();
+            return;
+        }
 
+
+
+        final RequestQueue queue =  Volley.newRequestQueue(this);
+        String url1 = "https://studev.groept.be/api/a18_sd409/checkEmail/";
+        JsonArrayRequest request = new JsonArrayRequest( url1 + email,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        System.out.println("Succesfully registered");
+                        try {
+                            JSONObject user = response.getJSONObject(0);
+                            String email1 = user.getString("email");
+                            Toast.makeText(context, "This email is already in use.", Toast.LENGTH_LONG).show();
+                            return;
+
+                        }
+                        catch(JSONException e) {
+                            String url = "https://studev.groept.be/api/a18_sd409/setUserData/";
+                            JsonArrayRequest request1 = new JsonArrayRequest(url + email + "/" + getHash(password) + "/" + familyName + "/" + name,
+
+                                    new Response.Listener<JSONArray>() {
+                                        @Override
+                                        public void onResponse(JSONArray response) {
+                                            System.out.println("Succesfully registered");
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            System.out.println("Database not found!");
+                                        }
+                                    });
+
+                            queue.add(request1);
+                            goToLogin(v);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("Database not found!");
+                        ((TextView)findViewById(R.id.errorMessage)).setText("You have no internet connection. Turn on your wifi or mobile data and try again.");
+
                     }
                 });
-
         queue.add(request);
-        goToLogin(v);
-
     }
     private String getHash(String pass) {
 

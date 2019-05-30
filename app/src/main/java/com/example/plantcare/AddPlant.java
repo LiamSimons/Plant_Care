@@ -2,6 +2,7 @@ package com.example.plantcare;
 
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 
@@ -78,10 +81,11 @@ public class AddPlant extends AppCompatActivity {
     // optie: voeg nog light intensity toe, (alertdialog builder)
 
     //zou nieuw plant object moeten aanmaken en die in de db storen
-    public void done(View view) {
-        String name = ((EditText) findViewById(R.id.editText_name)).getText().toString().trim();
-        String species = ((EditText) findViewById(R.id.editText_species)).getText().toString().trim();
-        String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString().trim();
+    public void done(final View view) {
+        final String name = ((EditText) findViewById(R.id.editText_name)).getText().toString().trim();
+        final String species = ((EditText) findViewById(R.id.editText_species)).getText().toString().trim();
+        final String str1 = ((EditText) findViewById(R.id.editText_water)).getText().toString().trim();
+        final Context context = this;
 
         Bundle extras = getIntent().getExtras();
         email = extras.getString("EMAIL");
@@ -92,28 +96,51 @@ public class AddPlant extends AppCompatActivity {
         }
         System.out.println(name + ", " + species + ", " + datum + ", " + str1 + "/" + email);
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://studev.groept.be/api/a18_sd409/addPlant/";
-        System.out.println(url + name + "/" + species + "/" + datum + "/" + str1 + "/" + email);
-        JsonArrayRequest request = new JsonArrayRequest(url + name + "/" + species + "/" + datum + "/" + str1 + "/" + email,
-
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        final String url = "https://studev.groept.be/api/a18_sd409/addPlant/";
+        String url1 = "https://studev.groept.be/api/a18_sd409/checkPlant/";
+        JsonArrayRequest request = new JsonArrayRequest( url1 + name + "/" + email + "/" + name,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        System.out.println("Successfully added plant.");
+                        try {
+                            JSONObject answer = response.getJSONObject(0);
+                            String answer1 = answer.getString("answer");
+                            Toast.makeText(context, "You already have a plant with this name", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        catch(JSONException e) {
+                            System.out.println(url + name + "/" + species + "/" + datum + "/" + str1 + "/" + email);
+                            JsonArrayRequest request1 = new JsonArrayRequest(url + name + "/" + species + "/" + datum + "/" + str1 + "/" + email,
+
+                                    new Response.Listener<JSONArray>() {
+                                        @Override
+                                        public void onResponse(JSONArray response) {
+                                            System.out.println("Successfully added plant.");
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            System.out.println("Database not found!");
+                                        }
+                                    });
+
+                            queue.add(request1);
+                            Toast.makeText(context, "You added " + name + " to the database.", Toast.LENGTH_SHORT).show();
+
+                            goToMyPlants(view);
+                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("Database not found!");
+                        ((TextView)findViewById(R.id.errorMessage)).setText("You have no internet connection. Turn on your wifi or mobile data and try again.");
+
                     }
                 });
-
         queue.add(request);
-        Toast.makeText(this, "You added " + name + " to the database.", Toast.LENGTH_SHORT).show();
-
-        goToMyPlants(view);
     }
 
     public void goToMyPlants(View view){

@@ -77,14 +77,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/register"
                 android:layout_marginTop="10dp" />
-            <TextView
-                android:id="@+id/skipLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/skip"
-                android:textAlignment="center"
-                android:onClick="skipLogin"
-                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
     </ScrollView>
