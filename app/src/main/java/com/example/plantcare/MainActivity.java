@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private String email;
     private int count = 0;
     private boolean fooled = false;
+    private boolean setting = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,22 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void showLogout(View view){
+        TextView logout = findViewById(R.id.logout);
+        if (!setting) {
+            logout.setText("Logout");
+            setting = true;
+        }
+        else{
+            logout.setText("");
+            setting = false;
+        }
+    }
+
+    public void logout(View view){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
     public void easterEgg(View view){
         if(fooled == false) {
@@ -57,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void yourPlants(View view){
-        Toast.makeText(this, "Here you can view you plants. (Most of the time.)", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Here you can view you plants.", Toast.LENGTH_LONG).show();
     }
     public void yourAgenda(View view){
-        Toast.makeText(this, "This is your agenda, you can see when you have to water your plants. If Anton did his job ;)", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "This is your agenda, you can see when you have to water your plants. The wrong plants though, i'm sorry. But you get the idea.", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -68,4 +86,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "You already logged in, you can't go back.", Toast.LENGTH_SHORT).show();
     }
 
+    public void goToAgenda(View view){
+        Intent intent = new Intent(this, Agenda.class);
+        intent.putExtra("EMAIL", email);
+        startActivity(intent);
+    }
 }

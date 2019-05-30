@@ -143,11 +143,17 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("Database not found!");
+                        ((TextView)findViewById(R.id.errorMessage)).setText("You have no internet connection. Turn on your wifi or mobile data and try again.");
+
                     }
                 });
 
         queue.add(request);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Toast.makeText(this, "Login please, if you don't have an account register first.", Toast.LENGTH_LONG).show();
     }
     //}
 }

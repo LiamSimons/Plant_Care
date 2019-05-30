@@ -1,0 +1,3 @@
+GOOGLE CALENDAR:
+	keytool -exportcert -keystore path-to-debug-or-production-keystore -list -v
+	749118064772-0opjm248fbupf46hq9otvknb813do6ch.apps.googleusercontent.com
