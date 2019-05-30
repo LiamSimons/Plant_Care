@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -56,7 +57,9 @@ public class Agenda extends AppCompatActivity implements RecyclerViewAdapter.Ite
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int jaar, int maand, int dag) {
+                maand++;
                 date = dag + "-" + maand + "-" + jaar;
+                maand--;
                 year = jaar;
                 month = maand;
                 day = dag;
@@ -67,13 +70,23 @@ public class Agenda extends AppCompatActivity implements RecyclerViewAdapter.Ite
                 plantSpecies.clear();
                 plantDays.clear();
                 plantWateringTimes.clear();
-                addAllPlantsToArrayLists();
+                addAllPlantsToArrayLists(year,month,day);
                 refreshView();
             }
         });
 
+        Calendar now = Calendar.getInstance();
+        int daynow = now.get(Calendar.DAY_OF_MONTH);
+        int monthnow = now.get(Calendar.MONTH);
+        int yearnow = now.get(Calendar.YEAR);
 
-        addAllPlantsToArrayLists();
+        System.out.println("AAAA" + now);
+        plantId.clear();
+        plantNames.clear();
+        plantSpecies.clear();
+        plantDays.clear();
+        plantWateringTimes.clear();
+        addAllPlantsToArrayLists(yearnow,monthnow,daynow);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -83,7 +96,7 @@ public class Agenda extends AppCompatActivity implements RecyclerViewAdapter.Ite
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
-    private void addAllPlantsToArrayLists() {
+    private void addAllPlantsToArrayLists(final int year, final int month, final int day) {
         String url = "https://studev.groept.be/api/a18_sd409/getPlantData/" + email;
         RequestQueue queue =  Volley.newRequestQueue(this);
         try {
@@ -108,7 +121,7 @@ public class Agenda extends AppCompatActivity implements RecyclerViewAdapter.Ite
                                     String species = row.getString("species");
                                     String plantDay = row.getString("plantDay");
                                     String waterTime = row.getString("waterTime");
-                                    Integer time;
+                                    int time;
                                     if (waterTime.equals("0")){
                                         time = 1;
                                     }
@@ -122,11 +135,11 @@ public class Agenda extends AppCompatActivity implements RecyclerViewAdapter.Ite
                                     String plantJaar = parts[2];
 
                                     int dag = Integer.valueOf(plantDag);
-                                    int maand = Integer.valueOf(plantMaand);
+                                    int maand = Integer.valueOf(plantMaand) - 1;
                                     int jaar = Integer.valueOf(plantJaar);
 
                                     Calendar c = Calendar.getInstance();
-                                    c.set(year, month, day, 0, 0);
+                                    c.set(year, month, day);
                                     Calendar c2 = Calendar.getInstance();
                                     c2.set(jaar, maand, dag, 0, 0);
 
